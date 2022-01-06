@@ -19,7 +19,7 @@
                 <feMergeNode in="SourceGraphic"/> 
             </feMerge>
         </filter>
-        <style type="text/css"><![CDATA[
+        <style type="text/css">
 /*
 ** CLOUDS
 */
@@ -250,7 +250,7 @@
      -moz-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
 }
-        ]]></style>
+</style>
     </defs>
     <g filter="url(#blur)" id="thunder">
         <g transform="translate(20,10)">

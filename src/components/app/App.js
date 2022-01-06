@@ -14,28 +14,34 @@ class App extends Component {
     temp: null,
     place: null,
     icon: null,
+    feelsLike: null,
   }
 
   weatherService = new WeatherService();
 
-  onUpdateTemp = (temp, place, icon) => {
-    this.setState({ temp, place, icon });
+  onUpdateTemp = (temp, place, icon, feelsLike) => {
+    this.setState({ temp, place, icon, feelsLike });
   }
 
   getTemp = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       this.weatherService.getResourse(position.coords.latitude, position.coords.longitude)
         .then(res => {
-          this.onUpdateTemp(Math.round(res.main.temp), res.name, res.weather[0].main);
+          this.onUpdateTemp(
+            Math.round(res.main.temp), 
+            res.name, 
+            res.weather[0].main, 
+            Math.round(res.main.feels_like)
+          );
         });
     });
   }
 
   render() {
-    const {temp, place, icon} = this.state;
+    const {temp, place, icon, feelsLike} = this.state;
 
     return (
-      <Container temp={temp} place={place} icon={icon} />
+      <Container temp={temp} place={place} icon={icon} feelsLike={feelsLike} />
     );
   }
 }

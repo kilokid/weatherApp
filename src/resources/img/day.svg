@@ -19,7 +19,7 @@
                 <feMergeNode in="SourceGraphic"/> 
             </feMerge>
         </filter>
-        <style type="text/css"><![CDATA[
+        <style type="text/css">
 /*
 ** CLOUDS
 */
@@ -485,7 +485,7 @@
           animation-timing-function: ease-in-out;
 }
 
-        ]]></style>
+</style>
     </defs>
     <g filter="url(#blur)" id="day">
         <g transform="translate(32,32)">

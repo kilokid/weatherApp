@@ -19,7 +19,7 @@
                 <feMergeNode in="SourceGraphic"/> 
             </feMerge>
         </filter>
-        <style type="text/css"><![CDATA[
+        <style type="text/css">
 /*
 ** CLOUDS
 */
@@ -175,7 +175,7 @@
       -ms-animation-iteration-count: 1;
           animation-iteration-count: 1;
 }
-        ]]></style>
+</style>
     </defs>
     <g filter="url(#blur)" id="cloudy-night-3">
         <g transform="translate(20,10)">
