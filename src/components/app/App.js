@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import WeatherService from '../../services/WeatherService';
+import Container from '../container/Container';
 
 import './App.css';
 
@@ -11,29 +12,30 @@ class App extends Component {
 
   state = {
     temp: null,
+    place: null,
+    icon: null,
   }
 
   weatherService = new WeatherService();
 
-  onUpdateTemp = (temp) => {
-    this.setState({ temp });
+  onUpdateTemp = (temp, place, icon) => {
+    this.setState({ temp, place, icon });
   }
 
   getTemp = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       this.weatherService.getResourse(position.coords.latitude, position.coords.longitude)
         .then(res => {
-          this.onUpdateTemp(Math.round(res.main.temp));
+          this.onUpdateTemp(Math.round(res.main.temp), res.name, res.weather[0].main);
         });
-
     });
   }
 
   render() {
-    const {temp} = this.state;
+    const {temp, place, icon} = this.state;
 
     return (
-        <h2>Температура в Питере: {temp} °C</h2>
+      <Container temp={temp} place={place} icon={icon} />
     );
   }
 }
