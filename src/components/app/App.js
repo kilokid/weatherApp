@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import WeatherService from '../../services/WeatherService';
 import Container from '../container/Container';
 
-import './App.css';
+import '../../styles/base.scss';
 
 const App = () => {
 

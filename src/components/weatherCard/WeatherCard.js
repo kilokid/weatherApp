@@ -6,7 +6,14 @@ import rainy from '../../resources/img/rainy.svg';
 import snow from '../../resources/img/snowy.svg';
 import clearDay from '../../resources/img/day.svg';
 
+import './weatherCard.scss';
+
 const WeatherCard = (props) => {
+    const newDescription = (str) => {
+        if (!str) return str;
+
+        return str[0].toUpperCase() + str.slice(1);
+    }
 
     let img;
     switch (props.icon){
@@ -41,13 +48,13 @@ const WeatherCard = (props) => {
 
     return (
         <div className="weather__card">
-            <h1>{props.place}</h1>
+            <h1 className='weather__city'>{props.place}</h1>
             <div className="weather__info">
-                <div className="weather__icon">
-                    <img src={img} alt="" />
+                <div className="weather__temp-info">
+                    <img className='weather__icon' src={img} alt="" />
+                    <p className="weather__temp">{props.temp}°C</p>
                 </div>
-                <p className="weather__description">{props.description}</p>
-                <p className="weather__temp">{props.temp}°C</p>
+                <p className="weather__description">{newDescription(props.description)}</p>
                 <p className="weather__feels">Ощущается как: {props.feelsLike}°C</p>
             </div>
         </div>

@@ -1,4 +1,9 @@
 .container {
-    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+
+    padding-top: 50px;
+
+    max-width: 1250px;
     margin: 0 auto;
 }
