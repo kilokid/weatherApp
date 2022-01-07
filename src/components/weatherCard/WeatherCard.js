@@ -7,6 +7,7 @@ import snow from '../../resources/img/snowy.svg';
 import clearDay from '../../resources/img/day.svg';
 
 const WeatherCard = (props) => {
+
     let img;
     switch (props.icon){
         case "Clouds": 
@@ -38,7 +39,6 @@ const WeatherCard = (props) => {
             break;
     }
 
-    console.log(cloudyDay)
     return (
         <div className="weather__card">
             <h1>{props.place}</h1>
@@ -46,6 +46,7 @@ const WeatherCard = (props) => {
                 <div className="weather__icon">
                     <img src={img} alt="" />
                 </div>
+                <p className="weather__description">{props.description}</p>
                 <p className="weather__temp">{props.temp}°C</p>
                 <p className="weather__feels">Ощущается как: {props.feelsLike}°C</p>
             </div>

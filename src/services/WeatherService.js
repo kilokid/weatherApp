@@ -12,7 +12,7 @@ class WeatherService {
     // }
         
     getResourse = async (lat, lon) => {
-        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.#apiKey}&units=metric`);
+        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.#apiKey}&units=metric&lang=ru`);
 
         if (!res.ok) {
             throw new Error(`Произошла ошибка при получении погоды, статус ошибки: ${res.status}`)
