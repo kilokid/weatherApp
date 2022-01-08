@@ -1,13 +1,20 @@
 {
   "files": {
-    "main.css": "/kilokid/weatherApp/static/css/main.e6c13ad2.css",
-    "main.js": "/kilokid/weatherApp/static/js/main.25464ead.js",
+    "main.css": "/kilokid/weatherApp/static/css/main.d17d2118.css",
+    "main.js": "/kilokid/weatherApp/static/js/main.d3b2e252.js",
+    "static/media/day.svg": "/kilokid/weatherApp/static/media/day.1def5db7aa561f2b4e51e748c8b37d60.svg",
+    "static/media/snowy.svg": "/kilokid/weatherApp/static/media/snowy.eabeb04097cc7470722336201154afed.svg",
+    "static/media/thunder.svg": "/kilokid/weatherApp/static/media/thunder.401ffd446d865c7b6069ff3f2ec073a7.svg",
+    "static/media/cloudyNight.svg": "/kilokid/weatherApp/static/media/cloudyNight.da7e724177f01d4a963611b9c0271324.svg",
+    "static/media/cloudyDay.svg": "/kilokid/weatherApp/static/media/cloudyDay.d97c71dd314ba4495c19f43df27a6d48.svg",
+    "static/media/rainy.svg": "/kilokid/weatherApp/static/media/rainy.9b0e6908066d6108d7e6a8e7aa2121c7.svg",
+    "static/media/rainy-6.svg": "/kilokid/weatherApp/static/media/rainy-6.f2c418ac51f5b69b7a56554623dc91b2.svg",
     "index.html": "/kilokid/weatherApp/index.html",
-    "main.e6c13ad2.css.map": "/kilokid/weatherApp/static/css/main.e6c13ad2.css.map",
-    "main.25464ead.js.map": "/kilokid/weatherApp/static/js/main.25464ead.js.map"
+    "main.d17d2118.css.map": "/kilokid/weatherApp/static/css/main.d17d2118.css.map",
+    "main.d3b2e252.js.map": "/kilokid/weatherApp/static/js/main.d3b2e252.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.25464ead.js"
+    "static/css/main.d17d2118.css",
+    "static/js/main.d3b2e252.js"
   ]
 }
