@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kilokid/weatherApp/static/css/main.d17d2118.css",
+    "main.css": "/kilokid/weatherApp/static/css/main.bd539c30.css",
     "main.js": "/kilokid/weatherApp/static/js/main.d3b2e252.js",
     "static/media/day.svg": "/kilokid/weatherApp/static/media/day.1def5db7aa561f2b4e51e748c8b37d60.svg",
     "static/media/snowy.svg": "/kilokid/weatherApp/static/media/snowy.eabeb04097cc7470722336201154afed.svg",
@@ -10,11 +10,11 @@
     "static/media/rainy.svg": "/kilokid/weatherApp/static/media/rainy.9b0e6908066d6108d7e6a8e7aa2121c7.svg",
     "static/media/rainy-6.svg": "/kilokid/weatherApp/static/media/rainy-6.f2c418ac51f5b69b7a56554623dc91b2.svg",
     "index.html": "/kilokid/weatherApp/index.html",
-    "main.d17d2118.css.map": "/kilokid/weatherApp/static/css/main.d17d2118.css.map",
+    "main.bd539c30.css.map": "/kilokid/weatherApp/static/css/main.bd539c30.css.map",
     "main.d3b2e252.js.map": "/kilokid/weatherApp/static/js/main.d3b2e252.js.map"
   },
   "entrypoints": [
-    "static/css/main.d17d2118.css",
+    "static/css/main.bd539c30.css",
     "static/js/main.d3b2e252.js"
   ]
 }
