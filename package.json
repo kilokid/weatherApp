@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kilokid/weatherApp"
+    "url": "git+https://github.com/kilokid/weatherApp/"
   },
-  "homepage": "https://github.com/kilokid/weatherApp#readme"
+  "homepage": "https://github.com/kilokid/weatherApp/"
 }
