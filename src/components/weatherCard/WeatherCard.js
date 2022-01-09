@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+
+import useWeatherService from '../../services/WeatherService';
+
 import cloudyDay from '../../resources/img/cloudyDay.svg';
 import cloudyNight from '../../resources/img/cloudyNight.svg';
 import thunder from '../../resources/img/thunder.svg';
@@ -8,7 +12,42 @@ import clearDay from '../../resources/img/day.svg';
 
 import './weatherCard.scss';
 
-const WeatherCard = (props) => {
+const WeatherCard = () => {
+    const [temp, setTemp] = useState(null);
+    const [place, setPlace] = useState(null);
+    const [icon, setIcon] = useState(null);
+    const [feelsLike, setFeelsLike] = useState(null);
+    const [description, setDescription] = useState(null);
+
+    const {getTempByCoords} = useWeatherService(); 
+
+    useEffect(() => {
+        onRequest();
+    }, []);
+
+    const onUpdateTemp = (temp, place, icon, feelsLike, description) => {
+        setTemp(temp);
+        setPlace(place);
+        setIcon(icon);
+        setFeelsLike(feelsLike);
+        setDescription(description)
+    }
+
+    const onRequest = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+        getTempByCoords(position.coords.latitude, position.coords.longitude)
+            .then(res => {
+                onUpdateTemp(
+                  res.temp, 
+                  res.place, 
+                  res.icon, 
+                  res.feelsLike,
+                  res.description,
+                );
+            });
+        });
+    }
+
     const newDescription = (str) => {
         if (!str) return str;
 
@@ -16,7 +55,7 @@ const WeatherCard = (props) => {
     }
 
     let img;
-    switch (props.icon){
+    switch (icon){
         case "Clouds": 
             img = cloudyNight
             break;
@@ -48,14 +87,14 @@ const WeatherCard = (props) => {
 
     return (
         <div className="weather__card">
-            <h1 className='weather__city'>{props.place}</h1>
+            <h1 className='weather__city'>{place}</h1>
             <div className="weather__info">
                 <div className="weather__temp-info">
                     <img className='weather__icon' src={img} alt="" />
-                    <p className="weather__temp">{props.temp}°C</p>
+                    <p className="weather__temp">{temp}°C</p>
                 </div>
-                <p className="weather__description">{newDescription(props.description)}</p>
-                <p className="weather__feels">Ощущается как: {props.feelsLike}°C</p>
+                <p className="weather__description">{newDescription(description)}</p>
+                <p className="weather__feels">Ощущается как: {feelsLike}°C</p>
             </div>
         </div>
     );

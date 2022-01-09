@@ -1,31 +1,27 @@
-class WeatherService {
-    #apiKey = '312b3e4a5c0f7918f5b3787c71cdc370';
+import { useHttp } from "../hooks/http.hook";
 
-    // GetUserLocation = async () => {
-        // navigator.geolocation.getCurrentPosition((position) => {
-        //     this.getResourse(position.coords.latitude, position.coords.longitude)
-        //         .then(res => {
-        //             const temp = this.#transformWeather(res);
-        //             return temp;
-        //         });
-        // });
-    // }
-        
-    getResourse = async (lat, lon) => {
-        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.#apiKey}&units=metric&lang=ru`);
+const useWeatherService = () => {
+    const {request} = useHttp();
 
-        if (!res.ok) {
-            throw new Error(`Произошла ошибка при получении погоды, статус ошибки: ${res.status}`)
-        }
+    const _apiKey = '312b3e4a5c0f7918f5b3787c71cdc370';
+    const _apiBase = 'https://api.openweathermap.org/data/2.5/weather?';
 
-        return await res.json();
+    const getTempByCoords = async (lat, lon) => {
+        const res = await request(`${_apiBase}lat=${lat}&lon=${lon}&appid=${_apiKey}&units=metric&lang=ru`);
+        return _transformWeather(res);
     }
 
-    #transformWeather = (weather) => {
+    const _transformWeather = (weather) => {
         return {
-            temp: Math.ceil(weather.main.temp),
+            temp: Math.round(weather.main.temp),
+            place: weather.name,
+            icon: weather.weather[0].main,
+            feelsLike: Math.round(weather.main.feels_like),
+            description: weather.weather[0].description,
         };
     }
+
+    return {getTempByCoords};
 }
 
-export default WeatherService;
+export default useWeatherService;
