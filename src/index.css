@@ -3,6 +3,11 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100vh;
+  background: -webkit-linear-gradient(0deg, #696eff,#f6a9ff);
+  background: linear-gradient(0deg, #696eff,#f6a9ff);
+  background-repeat: no-repeat;
 }
 
 code {

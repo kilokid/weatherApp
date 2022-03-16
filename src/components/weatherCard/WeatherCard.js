@@ -4,47 +4,65 @@ import useWeatherService from '../../services/WeatherService';
 import SwitchImg from '../../services/SwitchImg';
 
 import './weatherCard.scss';
+import ErrorMessage from '../errorMessage/ErrorMessage';
+import Spinner from '../spinner/Spinner';
 
 const WeatherCard = () => {
-    const [currentGeo, setCurrentGeo] = useState({});
+  const [currentGeo, setCurrentGeo] = useState({});
 
-    const {getTempByCoords} = useWeatherService();
+  const { getTempByCoords, error, loading } = useWeatherService();
 
-    useEffect(() => {
-        onRequest();
-    }, []);
+  useEffect(() => {
+    updateWeather();
+  }, []);
 
-    const onRequest = () => {
-        navigator.geolocation.getCurrentPosition((position) => {
-        getTempByCoords(position.coords.latitude, position.coords.longitude)
-            .then(res => {
-                const {temp, place, icon, feelsLike, description} = res;
-                setCurrentGeo({temp, place, icon, feelsLike, description});
-            });
-        });
-    }
+  const onWeatherRequest = (weather) => {
+    setCurrentGeo(weather);
+  };
 
-    const newDescription = (str) => {
-        if (!str) return str;
+  const updateWeather = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      getTempByCoords(position.coords.latitude, position.coords.longitude).then(onWeatherRequest);
+    });
+  };
 
-        return str[0].toUpperCase() + str.slice(1);
-    }
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const spinner = loading ? <Spinner /> : null;
+  const content = !(loading || error) ? <View currentGeo={currentGeo} /> : null;
 
-    let img = SwitchImg(currentGeo.icon);
+  return (
+    <div className={error ? 'weather__card weather__card-error' : 'weather__card'}>
+      {errorMessage}
+      {spinner}
+      {content}
+    </div>
+  );
+};
 
-    return (
-        <div className="weather__card">
-            <h1 className='weather__city'>{currentGeo.place}</h1>
-            <div className="weather__info">
-                <div className="weather__temp-info">
-                    <img className='weather__icon' src={img} alt="" />
-                    <p className="weather__temp">{currentGeo.temp}°C</p>
-                </div>
-                <p className="weather__description">{newDescription(currentGeo.description)}</p>
-                <p className="weather__feels">Ощущается как: {currentGeo.feelsLike}°C</p>
-            </div>
+const View = ({ currentGeo }) => {
+  const { place, temp, description, feelsLike, icon } = currentGeo;
+
+  const newDescription = (str) => {
+    if (!str) return str;
+
+    return str[0].toUpperCase() + str.slice(1);
+  };
+
+  let img = SwitchImg(icon);
+
+  return (
+    <>
+      <h1 className="weather__city">{place}</h1>
+      <div className="weather__info">
+        <div className="weather__temp-info">
+          <img className="weather__icon" src={img} alt="Weather icon" />
+          <p className="weather__temp">{temp}°C</p>
         </div>
-    );
-}
+        <p className="weather__description">{newDescription(description)}</p>
+        <p className="weather__feels">Ощущается как: {feelsLike}°C</p>
+      </div>
+    </>
+  );
+};
 
 export default WeatherCard;

@@ -14,11 +14,15 @@
         box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
         border-radius: 30px;
 
-        background-color: fafafa;
+        background-color: #fafafa;
 
         letter-spacing: .01em;
 
         color: #385774;
+
+        &-error {
+            background-color: #fff;
+        }
     }
 
     &__city {
@@ -28,6 +32,10 @@
         font-size: 28px;
         font-weight: 500;
         line-height: 33px;
+
+        @media (max-width: 376px) {
+            font-size: 24px;
+        }
     }
 
     &__info {
