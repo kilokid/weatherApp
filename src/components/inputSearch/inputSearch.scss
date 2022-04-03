@@ -1,0 +1,38 @@
+.search {
+    display: flex;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 350px;
+    margin-bottom: 20px;
+    
+    border-radius: 30px;
+    background-color: white;
+    border: 1px solid white;
+
+    &__input {
+        width: 300px;
+        padding: 5px 20px;
+
+        font-size: 16px;
+        line-height: 21px;
+        
+        border-style: none;
+        outline: none;
+    }
+
+    &__button {
+        margin-left: -10px;
+
+        font-size: 16px;
+        line-height: 21px;
+        color: white;
+        
+        border-style: none;
+        border-left: none;
+
+        background-color: #56A0EE;
+
+        cursor: pointer;
+    }
+}
