@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-
-import useWeatherService from '../../services/WeatherService';
 import SwitchImg from '../../services/SwitchImg';
 
 import './weatherCard.scss';
@@ -8,39 +5,16 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import ErrorCoords from '../errorMessage/ErrorCoords';
 import Spinner from '../spinner/Spinner';
 
-const WeatherCard = () => {
-  const [currentGeo, setCurrentGeo] = useState({});
-  const [coords, setCoords] = useState(false);
-
-  const { getTempByCoords, error, loading } = useWeatherService();
-
-  useEffect(() => {
-    updateWeather();
-  }, []);
-
-  const onWeatherRequest = (weather) => {
-    setCurrentGeo(weather);
-  };
-
-  const errorGetCoords = () => {
-    setCoords(true);
-  };
-
-  const updateWeather = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setCoords(false);
-
-      getTempByCoords(position.coords.latitude, position.coords.longitude).then(onWeatherRequest);
-    }, errorGetCoords);
-  };
-
-  const errorMessage = error ? <ErrorMessage /> : null;
-  const errorCoords = coords ? <ErrorCoords /> : null;
-  const spinner = loading ? <Spinner /> : null;
-  const content = !(loading || error || errorCoords) ? <View currentGeo={currentGeo} /> : null;
+const WeatherCard = (props) => {
+  const errorMessage = props.error ? <ErrorMessage /> : null;
+  const errorCoords = props.coords ? <ErrorCoords /> : null;
+  const spinner = props.loading ? <Spinner /> : null;
+  const content = !(props.loading || props.error || errorCoords) ? (
+    <View currentGeo={props.currentGeo} />
+  ) : null;
 
   return (
-    <div className={error ? 'weather__card weather__card-error' : 'weather__card'}>
+    <div className={props.error ? 'weather__card weather__card-error' : 'weather__card'}>
       {errorCoords}
       {errorMessage}
       {spinner}
@@ -74,5 +48,5 @@ const View = ({ currentGeo }) => {
     </>
   );
 };
-// test commit
+
 export default WeatherCard;

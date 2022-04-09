@@ -13,6 +13,11 @@ const useWeatherService = () => {
     return _transformWeather(res);
   };
 
+  const getTempByCityName = async (cityName) => {
+    const res = await request(`${_apiBase}q=${cityName}&appid=${_apiKey}&units=metric&lang=ru`);
+    return _transformWeather(res);
+  };
+
   const _transformWeather = (weather) => {
     return {
       temp: Math.round(weather.main.temp),
@@ -23,7 +28,7 @@ const useWeatherService = () => {
     };
   };
 
-  return { getTempByCoords, error, clearError, loading };
+  return { getTempByCoords, getTempByCityName, error, clearError, loading };
 };
 
 export default useWeatherService;
