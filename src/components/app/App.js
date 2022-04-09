@@ -35,6 +35,7 @@ const App = () => {
 
   const getWeatherForCity = (name) => {
     getTempByCityName(name).then(onWeatherRequest);
+    setCoords(false);
   };
 
   console.log(loading);
