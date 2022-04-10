@@ -38,8 +38,6 @@ const App = () => {
     setCoords(false);
   };
 
-  console.log(loading);
-
   return (
     <div className="container">
       <InputSearch onAdd={getWeatherForCity} />
