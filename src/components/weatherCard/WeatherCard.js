@@ -14,12 +14,12 @@ const WeatherCard = (props) => {
   ) : null;
 
   return (
-    <div className={props.error ? 'weather__card weather__card-error' : 'weather__card'}>
+    <a href="/" className={props.error ? 'weather__card weather__card-error' : 'weather__card'}>
       {errorCoords}
       {errorMessage}
       {spinner}
       {content}
-    </div>
+    </a>
   );
 };
 

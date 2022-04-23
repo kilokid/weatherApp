@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useWeatherService from '../../services/WeatherService';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import WeatherCard from '../weatherCard/WeatherCard';
 import InputSearch from '../inputSearch/InputSearch';
@@ -39,10 +40,12 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <InputSearch onAdd={getWeatherForCity} />
-      <WeatherCard currentGeo={currentGeo} error={error} loading={loading} coords={coords} />
-    </div>
+    <Router>
+      <div className="container">
+        <InputSearch onAdd={getWeatherForCity} />
+        <WeatherCard currentGeo={currentGeo} error={error} loading={loading} coords={coords} />
+      </div>
+    </Router>
   );
 };
 
