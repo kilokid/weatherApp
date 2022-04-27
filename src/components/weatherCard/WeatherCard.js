@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import SwitchImg from '../../services/SwitchImg';
 
 import './weatherCard.scss';
@@ -14,12 +16,14 @@ const WeatherCard = (props) => {
   ) : null;
 
   return (
-    <a href="/" className={props.error ? 'weather__card weather__card-error' : 'weather__card'}>
+    <Link
+      to="/weatherApp/info"
+      className={props.error ? 'weather__card weather__card-error' : 'weather__card'}>
       {errorCoords}
       {errorMessage}
       {spinner}
       {content}
-    </a>
+    </Link>
   );
 };
 

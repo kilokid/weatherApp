@@ -7,6 +7,7 @@ import './app.scss';
 import Spinner from '../spinner/Spinner';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
+const WeatherInfo = lazy(() => import('../pages/WeatherInfo'));
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/weatherApp" element={<MainPage />} />
+            <Route path="/weatherApp/info" element={<WeatherInfo />} />
           </Routes>
         </Suspense>
       </main>

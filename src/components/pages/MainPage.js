@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import useWeatherService from '../../services/WeatherService';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import WeatherCard from '../weatherCard/WeatherCard';
 import InputSearch from '../inputSearch/InputSearch';
@@ -13,7 +12,7 @@ const MainPage = () => {
     updateWeather();
   }, []);
 
-  const { getTempByCoords, getTempByCityName, error, loading } = useWeatherService();
+  const { getTempByCoords, getTempByCityName, error, loading, clearError } = useWeatherService();
 
   const onWeatherRequest = (weather) => {
     setCurrentGeo(weather);
@@ -24,6 +23,8 @@ const MainPage = () => {
   };
 
   const updateWeather = () => {
+    clearError();
+
     navigator.geolocation.getCurrentPosition((position) => {
       setCoords(false);
 
@@ -32,6 +33,7 @@ const MainPage = () => {
   };
 
   const getWeatherForCity = (name) => {
+    clearError();
     getTempByCityName(name).then(onWeatherRequest);
     setCoords(false);
   };
