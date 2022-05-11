@@ -4,10 +4,10 @@ import useWeatherService from '../../services/WeatherService';
 import WeatherCard from '../weatherCard/WeatherCard';
 import InputSearch from '../inputSearch/InputSearch';
 
-const MainPage = () => {
+const MainPage = (props) => {
   const [currentGeo, setCurrentGeo] = useState({});
   const [coords, setCoords] = useState(false);
-
+  
   useEffect(() => {
     updateWeather();
   }, []);
@@ -16,6 +16,7 @@ const MainPage = () => {
 
   const onWeatherRequest = (weather) => {
     setCurrentGeo(weather);
+    props.getCityInfo(weather);
   };
 
   const errorGetCoords = () => {
@@ -30,6 +31,8 @@ const MainPage = () => {
 
       getTempByCoords(position.coords.latitude, position.coords.longitude).then(onWeatherRequest);
     }, errorGetCoords);
+
+
   };
 
   const getWeatherForCity = (name) => {

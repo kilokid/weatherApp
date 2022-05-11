@@ -22,11 +22,9 @@ const useWeatherService = () => {
 
   const getTempByfiveDays = async (lat, lon) => {
     const res = await request(
-      `${_apiBase}/forecast?lat=35&lon=139&appid=${_apiKey}&units=metric&lang=ru`,
+      `${_apiBase}/forecast?lat=${lat}&lon=${lon}&appid=${_apiKey}&units=metric&lang=ru`,
     );
   };
-
-  // getTempByfiveDays();
 
   const _transformWeather = (weather) => {
     return {
@@ -35,6 +33,10 @@ const useWeatherService = () => {
       icon: weather.weather[0].main,
       feelsLike: Math.round(weather.main.feels_like),
       description: weather.weather[0].description,
+      coords: {
+        lat: weather.coord.lat,
+        lon:weather.coord.lon
+      },
     };
   };
 
