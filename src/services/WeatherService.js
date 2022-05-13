@@ -24,6 +24,8 @@ const useWeatherService = () => {
     const res = await request(
       `${_apiBase}/forecast?lat=${lat}&lon=${lon}&appid=${_apiKey}&units=metric&lang=ru`,
     );
+
+    return _transformWeatherForDays(res);
   };
 
   const _transformWeather = (weather) => {
@@ -40,7 +42,13 @@ const useWeatherService = () => {
     };
   };
 
-  return { getTempByCoords, getTempByCityName, error, clearError, loading };
+  const _transformWeatherForDays = (weather) => {
+    return {
+      // TODO: Получать данные о погоде
+    };
+  };
+
+  return { getTempByCoords, getTempByfiveDays, getTempByCityName, error, clearError, loading };
 };
 
 export default useWeatherService;

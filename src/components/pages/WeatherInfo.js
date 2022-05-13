@@ -1,7 +1,15 @@
+import { useEffect, useState } from 'react';
+import useWeatherService from '../../services/WeatherService';
+
 const WeatherInfo = (props) => {
   const {weatherInfo} = props;
-  console.log(weatherInfo)
+  const { getTempByfiveDays, error, loading, clearError } = useWeatherService();
+  
+  useEffect(() => {
+    getTempByfiveDays(weatherInfo.coords.lat, weatherInfo.coords.lon);
+  }, [])
+
+  // TODO: Получать объект дней, создать компонент слайдера, выводить туда каждый день 
   return <h2>{weatherInfo.place}</h2>;
 };
-// TODO:Добавить сюды метод получения погоды на 5 дней по координатам
 export default WeatherInfo;
