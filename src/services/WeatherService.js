@@ -44,7 +44,8 @@ const useWeatherService = () => {
 
   const _transformWeatherForDays = (weather) => {
     return {
-      // TODO: Получать данные о погоде
+      place: weather.city.name,
+      arrWeatherDays: weather.list,
     };
   };
 

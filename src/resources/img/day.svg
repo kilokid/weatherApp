@@ -219,10 +219,10 @@
      -moz-animation-iteration-count: infinite;
       -ms-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  -webkit-transform-origin: 12.5px 15.15px 0; /* TODO FF CENTER ISSUE */
-     -moz-transform-origin: 12.5px 15.15px 0; /* TODO FF CENTER ISSUE */
-      -ms-transform-origin: 12.5px 15.15px 0; /* TODO FF CENTER ISSUE */
-          transform-origin: 12.5px 15.15px 0; /* TODO FF CENTER ISSUE */
+  -webkit-transform-origin: 12.5px 15.15px 0;
+     -moz-transform-origin: 12.5px 15.15px 0;
+      -ms-transform-origin: 12.5px 15.15px 0;
+          transform-origin: 12.5px 15.15px 0;
 }
 
 @keyframes am-weather-moon-star-1 {

@@ -15,8 +15,6 @@ const App = () => {
   const getCityInfo = ( cityInfo ) => {
     setCityInfo(cityInfo);
   }
-
-  console.log(cityInfo)
   
   return (
     <Router>
